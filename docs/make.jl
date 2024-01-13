@@ -5,10 +5,10 @@ DocMeta.setdocmeta!(TuXartis, :DocTestSetup, :(using TuXartis); recursive=true)
 
 makedocs(;
     modules=[TuXartis],
-    authors="Dimitris Floros <flojim4@gmail.com> and contributors",
+    authors="ACDNX",
     sitename="TuXartis.jl",
     format=Documenter.HTML(;
-        canonical="https://fcdimitr.github.io/TuXartis.jl",
+        canonical="https://pitsianis.github.io/TuXartis.jl",
         edit_link="main",
         assets=String[],
     ),
@@ -18,6 +18,6 @@ makedocs(;
 )
 
 deploydocs(;
-    repo="github.com/fcdimitr/TuXartis.jl",
+    repo="github.com/pitsianis/TuXartis.jl",
     devbranch="main",
 )
