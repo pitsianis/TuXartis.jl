@@ -1,6 +1,6 @@
 name = "TuXartis"
 uuid = "c69dc4da-6d99-42ba-8ffe-3d2132b9a896"
-authors = ["Dimitris Floros <flojim4@gmail.com> and contributors"]
+authors = ["ACDNX"]
 version = "1.0.0-DEV"
 
 [compat]

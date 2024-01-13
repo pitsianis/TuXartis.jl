@@ -4,7 +4,7 @@ CurrentModule = TuXartis
 
 # TuXartis
 
-Documentation for [TuXartis](https://github.com/fcdimitr/TuXartis.jl).
+Documentation for [TuXartis](https://github.com/pitsianis/TuXartis.jl).
 
 ```@index
 ```
