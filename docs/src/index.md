@@ -4,11 +4,10 @@ CurrentModule = TuXartis
 
 # TuXartis
 
-Documentation for [TuXartis](https://github.com/pitsianis/TuXartis.jl).
+![](img/ba-twin-comparison.png)
 
-```@index
-```
+![](img/stick-twin-comparison.png)
 
-```@autodocs
-Modules = [TuXartis]
-```
+![](img/tabula-twin.png)
+
+![](img/mnist-embedding.png)
