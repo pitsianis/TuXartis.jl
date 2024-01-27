@@ -25,7 +25,7 @@ Depth = 2:3
 
  * degree 
  * common neighbors (number of incident triangles)
- * Adamic-Adar [(Adamic-Adar formula)](@ref "Adamic-Adar formula")
+ * Adamic-Adar [(definition)](@ref "Adamic-Adar definition")
  * Ricci curvature 
    - sublist
    - another item
