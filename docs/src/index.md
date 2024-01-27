@@ -4,12 +4,21 @@ CurrentModule = TuXartis
 
 # TuXartis
 
-## Introduction 
-  (to come) 
-  
-## Vertex or edge indices & distributions 
 
-### Vertex indices 
+## Brief description 
+
+  (with active links to relevant sections, subsections, equations, references) 
+
+## Software architecture 
+   (with active links) 
+
+## Julia and beyond 
+
+##  Technical description 
+
+### Vertex or edge indices & distributions 
+
+o  Vertex indices 
  * degree
  * local cluster coefficient
  * degree centrality
@@ -18,7 +27,7 @@ CurrentModule = TuXartis
  * hits
  * (Perron) eigenvectoror centrality 
 
-### Edge indices 
+o Edge indices 
  * degree 
  * common neighbors (number of incident triangles)
  * Adamic-Adar
@@ -26,7 +35,7 @@ CurrentModule = TuXartis
    - sublist
    - another item
 
-## Spatial embedding 
+### Spatial embedding 
 (low-dimensional real-valued vector representation) 
 
   * Embedding types
@@ -47,19 +56,29 @@ CurrentModule = TuXartis
      + by SG-t-SNE
      + (add more)
      + 
-## Histogram (bins) images on spatial maps  
+### Histogram (bins) images on spatial maps  
 
-
-## Translation of histogram images 
-between vertex maps and edge maps 
+ (must demo an image of a bin on a map, one for vertices, one for edges) 
+ 
+### Image translation between spatial maps  
+ o between two vertex maps 
+ o between two edge maps 
+ o between a vertex map and an edge map 
 
 ( must demo the image translation  ) 
 
-## Mathematical description 
+### Mathematical description 
 
 
 ## User interface 
-
+ o interface channel 
+   + via data 
+   + via function handles
+ o interface functionalities   
+   + select or link to a different embedding method 
+   + select or use a vertex or edge index 
+   + specify a particular transform of a vertex/edge variable 
+   + specify a particular subset of vertices or edges 
 
 ## References 
 
