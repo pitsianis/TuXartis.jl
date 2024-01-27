@@ -55,6 +55,8 @@ between vertex maps and edge maps
 
 ( must demo the image translation  ) 
 
+## Mathematical description 
+
 
 ## User interface 
 
