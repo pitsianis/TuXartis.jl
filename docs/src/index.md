@@ -4,7 +4,11 @@ CurrentModule = TuXartis
 
 # TuXartis
 
-## Vertex indices 
+## Introduction 
+
+## Vertex or edge indices and distributions 
+
+### Vertex indices 
  * degree
  * local cluster coefficient
  * degree centrality
@@ -13,14 +17,32 @@ CurrentModule = TuXartis
  * hits
  * (Perron) eigenvectoror centrality 
 
-## Edge indices 
+### Edge indices 
  * degree 
  * common neighbors (number of incident triangles)
  * Adamic-Adar
  * Ricci curvature 
    - sublist
    - another item
-  
+
+## Spatial embedding (low-dimensional vector representation) 
+  * embedding types
+    ** vertex embedding/vector representation
+    ** edge embedding
+     *** induced by vertex embedding
+     *** generated via line graph
+    ** vertex-edge twin-embedding (a unifircation)
+  * embedding methods
+    ** by force
+    ** via graph Laplacian
+    ** by SG-t-SNE
+
+## Histogram (bins) images on spatial maps  
+
+
+## Translation of histogram images between vertex maps and edge maps 
+
+
 Inline math $\alpha x^2 + \beta x + \gamma$
 
 Math equation
