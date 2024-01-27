@@ -21,7 +21,7 @@ k(v) = | \mathcal{N}(v) |, \quad \forall v \in V
 
 ```math
 \textrm{lcc}(v) = \sum_{ (v,u) \in E}
-                   \frac{ \mbox{\rm cn}(v,u) }{ k(x)(k(x)-1)} 
+                   \frac{ \textrm{cn}(v,u) }{ k(x)(k(x)-1)} 
                    = \frac{| \mathcal{N}(u) \cap \mathcal{N}(v)|}{ k(x)(k(x)-1)}  
 ```
 
