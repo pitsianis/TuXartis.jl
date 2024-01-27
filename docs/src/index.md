@@ -4,6 +4,23 @@ CurrentModule = TuXartis
 
 # TuXartis
 
+## Section
+
+### Subsection
+
+ * List item
+ * another item
+   - sublist
+   - another item
+  
+Inline math $\alpha x^2 + \beta x + \gamma$
+
+Math equation
+$$A x = b$$
+on its own.
+
+
+
 ![](img/ba-twin-comparison.png)
 Independent 2D vertex embedding and edge embedding in case (a) vs. the 2D twin-embeddings in case (b) of a Barabási-Albert graph (n = 500 nodes, m = 2,485 edges).For each case, in the vertex embedding (to the left), the same 9 vertex points with the highest degrees and the line segments representing their respective incident edges are highlighted in red color. The highlighted line segments are translated to the corresponding edge points in the corresponding edge embedding space.
 
