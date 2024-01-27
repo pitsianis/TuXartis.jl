@@ -4,6 +4,14 @@ CurrentModule = TuXartis
 
 # TuXartis
 
+*A package for visualizing vertex and edge properties on graphs or networks.*
+
+## Table of contents
+
+```@contents
+Pages = map( x->x[2], Main.ALLPAGES )
+Depth = 4
+```
 
 ## Brief description 
 

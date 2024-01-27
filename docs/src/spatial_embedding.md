@@ -1,8 +1,4 @@
-```@meta
-CurrentModule = TuXartis
-```
 
-# Spatial embedding 
 (low-dimensional real-valued vector representation) 
 
   * Embedding types

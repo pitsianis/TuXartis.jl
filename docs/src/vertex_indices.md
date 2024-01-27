@@ -1,9 +1,3 @@
-```@meta
-CurrentModule = TuXartis
-```
-
-# Vertex indices 
- 
  * degree
  * local cluster coefficient
  * degree centrality
