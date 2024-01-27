@@ -4,11 +4,12 @@ CurrentModule = TuXartis
 
 # Demo cases
 
+  
 ![](img/ba-twin-comparison.png)
 
 Independent 2D vertex embedding and edge embedding in case (a) vs. the 2D twin-embeddings in case (b) of a Barabási-Albert graph (n = 500 nodes, m = 2,485 edges).For each case, in the vertex embedding (to the left), the same 9 vertex points with the highest degrees and the line segments representing their respective incident edges are highlighted in red color. The highlighted line segments are translated to the corresponding edge points in the corresponding edge embedding space.
 
-
++ Stick sculpture 
 
 ![](img/stick-twin-comparison.png)
 A pictorial introduction of the twin-embedding method and its key advantages with a stick sculpture comprised of 105 sticks and 50 joins. From left to right: (a) A non-planar graph for the sculpture with n = 50 nodes and m = 105 edges; (b) The (m + n) × (m + n) twin-embedding adjacency matrix; (c) A 2D twin-embedding of the graph. (c-1) The vertex points marked in blue and the edge points in red are interspersed. A blue vertex point has its adjacent vertex points in blue close by and also has its incident edges in red nearby. (c-2) The blue vertex points and the red edge points are well matched, manifesting the effect of self-assignment by the twin embedding. (c-3) The red point clusters indicate densely bundled edges at high-degree vertices. (d) The vertex embedding split from the twin embedding. Without external regulation, the line segments for the edges are well laid out and less prone to co-linear or overly crossing placements, as an evidence of the autonomous self-regulation induced by the twin-embedding method.
