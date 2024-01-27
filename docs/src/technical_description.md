@@ -13,20 +13,20 @@ Depth = 2:3
 
 #### Vertex indices  
 
- * degree
- * local cluster coefficient
+ * degree [(definition)](@ref "Vertex degree")
+ * local cluster coefficient [(definition)](@ref "Local cluster coefficient")
  * degree centrality
  * neighbor degree centrality
  * neighbor embeddedness centrality 
- * hits
- * (Perron) eigenvectoror centrality 
+ * hits [(definition)](@ref "hits")
+ * (Perron) eigenvector centrality [(definition)](@ref "(Perron) eigenvector centrality")
 
 #### Edge indices  
 
- * degree 
- * common neighbors (number of incident triangles)
- * Adamic-Adar [(definition)](@ref "Adamic-Adar definition")
- * Ricci curvature 
+ * degree [(definition)](@ref "Edge degree")
+ * common neighbors (number of incident triangles) [(definition)](@ref "Common neighbors")
+ * Adamic-Adar [(definition)](@ref "Adamic-Adar index")
+ * Ricci curvature  [(definition)](@ref "Ricci curvature")
    - sublist
    - another item
 
