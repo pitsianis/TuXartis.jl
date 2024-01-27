@@ -4,12 +4,20 @@ CurrentModule = TuXartis
 
 # TuXartis
 
-## Section
+## Vertex indices 
+ * degree
+ * local cluster coefficient
+ * degree centrality
+ * neighbor degree centrality
+ * neighbor embeddedness centrality 
+ * hits
+ * (Perron) eigenvectoror centrality 
 
-### Subsection
-
- * List item
- * another item
+## Edge indices 
+ * degree 
+ * common neighbors (number of incident triangles)
+ * Adamic-Adar
+ * Ricci curvature 
    - sublist
    - another item
   
