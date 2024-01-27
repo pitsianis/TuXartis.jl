@@ -5,8 +5,9 @@ CurrentModule = TuXartis
 # TuXartis
 
 ## Introduction 
-
-## Vertex or edge indices and distributions 
+  (to come) 
+  
+## Vertex or edge indices & distributions 
 
 ### Vertex indices 
  * degree
@@ -25,33 +26,37 @@ CurrentModule = TuXartis
    - sublist
    - another item
 
-## Spatial embedding (low-dimensional vector representation) 
-  * embedding types
-    ** vertex embedding/vector representation
-    ** edge embedding
-     *** induced by vertex embedding
-     *** generated via line graph
-    ** vertex-edge twin-embedding (a unifircation)
-  * embedding methods
-    ** by force
-    ** via graph Laplacian
-    ** by SG-t-SNE
+## Spatial embedding 
+(low-dimensional vector representation) 
+
+  * Embedding types
+    + vertex embedding/vector representation
+    + edge embedding
+       - induced by vertex embedding
+       - generated via line graph
+       - vertex-edge twin-embedding (a unification)
+         
+  * Embedding methods
+     + by force
+     + via graph Laplacian
+     + by SG-t-SNE
 
 ## Histogram (bins) images on spatial maps  
 
 
-## Translation of histogram images between vertex maps and edge maps 
+## Translation of histogram images 
+between vertex maps and edge maps 
+
+( must demo the images ) 
 
 
-Inline math $\alpha x^2 + \beta x + \gamma$
-
-Math equation
-$$A x = b$$
-on its own.
 
 
+
+## Demo cases 
 
 ![](img/ba-twin-comparison.png)
+
 Independent 2D vertex embedding and edge embedding in case (a) vs. the 2D twin-embeddings in case (b) of a Barabási-Albert graph (n = 500 nodes, m = 2,485 edges).For each case, in the vertex embedding (to the left), the same 9 vertex points with the highest degrees and the line segments representing their respective incident edges are highlighted in red color. The highlighted line segments are translated to the corresponding edge points in the corresponding edge embedding space.
 
 
