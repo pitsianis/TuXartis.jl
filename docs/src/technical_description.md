@@ -13,35 +13,56 @@ Depth = 2:3
 
 #### Vertex indices  
 
-```@eval
-using Markdown
-Markdown.parse_file(joinpath("..", "src", "vertex_indices.md"))
-```
+ * degree
+ * local cluster coefficient
+ * degree centrality
+ * neighbor degree centrality
+ * neighbor embeddedness centrality 
+ * hits
+ * (Perron) eigenvectoror centrality 
 
 #### Edge indices  
 
-```@eval
-using Markdown
-Markdown.parse_file(joinpath("..", "src", "edge_indices.md"))
-```
+ * degree 
+ * common neighbors (number of incident triangles)
+ * Adamic-Adar [(Adamic-Adar formula)](@ref "Adamic-Adar formula")
+ * Ricci curvature 
+   - sublist
+   - another item
+
 
 ## Spatial embedding
 
-```@eval
-using Markdown
-Markdown.parse_file(joinpath("..", "src", "spatial_embedding.md"))
-```
+(low-dimensional real-valued vector representation) 
+
+  * Embedding types
+    + vertex embedding/vector representation
+    + edge embedding
+       - induced by vertex embedding
+       - generated via line graph
+       - vertex-edge twin-embedding
+         ( a unification and a generalization ) 
+
+  * Embedding properties (basic) 
+    + adjacent vertices are closer to each other in the real-valued vector space
+    + incident edges are closer to each other in he real-valued vector space 
+      
+  * Embedding methods
+     + by force
+     + via graph Laplacian
+     + by SG-t-SNE
+     + (add more)
+
 
 ## Histogram images on spatial maps
-
-```@eval
-using Markdown
-Markdown.parse_file(joinpath("..", "src", "histogram_on_maps.md"))
-```
-
+ 
+ (must demo an image of a bin on a map, one for vertices, one for edges) 
+ 
 ## Translation of histogram images
 
-```@eval
-using Markdown
-Markdown.parse_file(joinpath("..", "src", "histogram_translation.md"))
-```
+
+ o between two vertex maps 
+ o between two edge maps 
+ o between a vertex map and an edge map 
+
+( must demo the image translation  ) 

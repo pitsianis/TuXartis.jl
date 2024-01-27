@@ -30,6 +30,7 @@ makedocs(;
     format=Documenter.HTML(;
         canonical="https://pitsianis.github.io/TuXartis.jl",
         edit_link="main",
+        # mathengine=Documenter.MathJax3(),
         assets=String[],
     ),
     pages=ALLPAGES,

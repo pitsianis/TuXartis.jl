@@ -4,7 +4,8 @@ CurrentModule = TuXartis
 
 # Mathematical description
 
-$$
-  \label{eq:edge-adamic-adar}
-  aa(x,y) = \sum \frac{1}{ \log() }  
-$$
+## Adamic-Adar formula
+
+```math
+\textrm{aa}(x,y) = \sum \frac{1}{ \log() }  
+```
