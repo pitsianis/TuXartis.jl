@@ -1,11 +1,18 @@
-using SparseArrays
-using DelimitedFiles, SGTSNEDKU
+using Pkg
+
+Pkg.add("SparseArrays")
+Pkg.add("DelimitedFiles")
+Pkg.add("GraphPlot")
+Pkg.add("Graphs")
+Pkg.add("SGtSNEpi")
+
+using SparseArrays, DelimitedFiles, GraphPlot, Graphs,SGtSNEpi
 
 
 
 include("adjacency2incidence.jl")
 include("get_embedding_matrix.jl")
-include("make_twin_embedding.jl")
+include("make_twin_matrix.jl")
 include("plot_embedding.jl")
 include("degreeTuXartis.jl")
 include("vidx_to_eidx.jl")
@@ -13,16 +20,20 @@ include("vidx_to_eidx.jl")
 
 n = 1000
 d = 5
+k = 3
 seed = 1
-A = SGTSNEDKU.generate( SGTSNEDKU.BAGraph(; n, d); seed )
+A = Graphs.barabasi_albert(n, d, k,seed=seed)
+A = Graphs.adjacency_matrix(A)
 
 Bo, H,  T = adjacency2incidence(A)
 B = abs.(Bo)
+
 A_twin = make_twin_matrix(A)
+Y_twin = sgtsnepi(A_twin)
 
-Y_twin = sgtsnepi(A_twin,seed=1)
-
-Y_e = Y_twin[1:m, :]
+m = size(B,1)
+n = size(B,2)
+Y_e = Y_twin[1:n, :]
 Y_v = Y_twin[m+1:m+n, :]
 
 
