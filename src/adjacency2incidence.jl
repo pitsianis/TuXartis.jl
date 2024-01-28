@@ -40,5 +40,3 @@ function adjacency2incidence(A)
     return C, H, T
 end
 
-# Authors: Cody
-# Date: 2023-1-12

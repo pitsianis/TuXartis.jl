@@ -7,5 +7,3 @@ function degreeTuXartis(A::AbstractMatrix)
     return d
 end
 
-# Authors: Cody
-# Date: 2023-1-13

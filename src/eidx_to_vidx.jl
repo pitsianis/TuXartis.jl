@@ -23,5 +23,3 @@ function eidx_to_vidx(B::AbstractMatrix, eidx::Vector{T}) where T
     return vec(vidx)  # Cast into a column vector
 end
 
-# Authors: Cody and Aaron
-# Date: 2023-12-28

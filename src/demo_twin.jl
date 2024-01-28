@@ -9,7 +9,6 @@ Pkg.add("SGtSNEpi")
 using SparseArrays, DelimitedFiles, GraphPlot, Graphs,SGtSNEpi
 
 
-
 include("adjacency2incidence.jl")
 include("get_embedding_matrix.jl")
 include("make_twin_matrix.jl")
@@ -22,8 +21,8 @@ n = 1000
 d = 5
 k = 3
 seed = 1
-A = Graphs.barabasi_albert(n, d, k,seed=seed)
-A = Graphs.adjacency_matrix(A)
+g = Graphs.barabasi_albert(n, d, k,seed=seed)
+A = Graphs.adjacency_matrix(g)
 
 Bo, H,  T = adjacency2incidence(A)
 B = abs.(Bo)
@@ -54,8 +53,3 @@ edge_colors = [i in highest_degree_edg ? :blue : :grey for i in 1:size(Y_e, 1)]
 edge_alphas = [i in highest_degree_edg ? 1 : 0.1 for i in 1:size(Y_v, 1)]
 plot_embedding(Y_e,color = edge_colors, title = "edge embedding",alpha = edge_alphas)
 
-# scatter(Y_v[:, 1], Y_v[:, 2], label="", color="blue", aspect_ratio=:equal,marksize =5, size = (600,600),framestyle=:zerolines, alpha =0.5)
-    
-
-## Author: Cody
-## Date: 2024-1-17
