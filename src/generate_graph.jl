@@ -1,17 +1,16 @@
-using Graphs
+"""
+Generate a graph of the specified type with optional parameters.
 
+Arguments:
+- graph_type::String: Type of the graph to generate. Supported types: 
+    "barabasi_albert", "watts_strogatz", "erdos_renyi", "complete_graph"
+- kwargs: Optional keyword arguments specific to each graph type.
+
+Returns:
+- g: Generated graph.
+"""
 function generate_graph(graph_type; kwargs...)
-    """
-    Generate a graph of the specified type with optional parameters.
 
-    Arguments:
-    - graph_type::String: Type of the graph to generate. Supported types: 
-        "barabasi_albert", "watts_strogatz", "erdos_renyi", "complete_graph"
-    - kwargs: Optional keyword arguments specific to each graph type.
-
-    Returns:
-    - g: Generated graph.
-    """
     if graph_type == "barabasi_albert"
         n = get(kwargs, :n, 1000)
         d = get(kwargs, :d, 5)
