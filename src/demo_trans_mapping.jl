@@ -18,13 +18,11 @@ Y_v = sgtsnepi(A;d=3)
 Y_e = sgtsnepi(ALG;d=3)
 
 
+# demo
 
-B = Graphs.incidence_matrix(g)
+transmapping(G,Y_v,Y_e,sequence);
 
 
-# call function from TuXartis.jl to see trans-mapping of desired variable
-TuXartis.transmapping(G,Y_v,Y_e,sequence);
-
-TuXartis.hist_map(G,Y,sequence);
+# TuXartis.hist_map(G,Y,sequence);
 
 
