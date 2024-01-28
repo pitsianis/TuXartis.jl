@@ -17,7 +17,7 @@ Create a scatter plot to visualize 2D embedding coordinates.
 """
 function plot_embedding(Y; color=:"blue", xlabel="", ylabel="",  title="Embedding Plot", marksize = 5,size = (700,700),alpha=0.5)
 
-    plot(scatter(Y[:, 1], Y[:, 2], label="", color=color, aspect_ratio=:equal,marksize =marksize, size = size,framestyle=:zerolines, alpha =alpha))
+    scatter_plot = scatter(Y[:, 1], Y[:, 2], label="", color=color, aspect_ratio=:equal,marksize =marksize, size = size,framestyle=:zerolines, alpha =alpha)
     
     if isempty(xlabel)
         xaxis!("") 
@@ -32,6 +32,7 @@ function plot_embedding(Y; color=:"blue", xlabel="", ylabel="",  title="Embeddin
     end
     
     title!(title)
+    return scatter_plot
 end
 
 #Author: Cody
