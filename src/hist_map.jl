@@ -11,21 +11,23 @@ a = (1:10)
 
 Y = sgtsnepi(g;d=2)
 
-function hist_map(y::Matrix, sequence::Matrix; color=:red, highlight_indices=1:10, large2small=true, alpha = 5)
+
+
+function hist_map(y::Matrix, sequence::Matrix; color=:red, highlight_indices=(1:10), large2small=true)
     vertex_indices = sortperm(vec(sequence), rev=large2small)[highlight_indices]
 
     # Create scatter plot
-    point_colors = [i in highlight_indices ? color : :lightblue for i in 1:size(y, 1)]
-    point_alphas = [i in highlight_indices ? 1 : 0.1 for i in 1:size(y, 1)]
+    point_colors = [i in vertex_indices ? color : :lightblue for i in 1:size(y, 1)]
+    point_alphas = [i in vertex_indices ? 1 : 0.1 for i in 1:size(y, 1)]
     scatter_plot = plot_embedding(y,color = point_colors, title = "", alpha = point_alphas, size = (350,350))
 
     # Create the first histogram plot with specified bin edges and range
-    histogram_plot = histogram(vec(sequence),bins = 0:1:100, orientation=:vertical, legend=false,
-                                xlims=(0, maximum(sequence)),ylims = (0,1),normalize=:probability)
+    # histogram_plot = histogram(vec(sequence),bins = 0:1:100, orientation=:vertical, legend=false,
+    #                             xlims=(0, maximum(sequence)),ylims = (0,1),normalize=:probability)
 
     # Create the second histogram using the same bin edges and range
-    histogram!(histogram_plot, bins = 0:1:100,sequence[highlight_indices], color=color, orientation=:vertical,
-                                xlims=(0,maximum(sequence)),ylims = (0,1),normalize=:probability)
+    # histogram!(histogram_plot, bins = 0:1:100,sequence[highlight_indices], color=color, orientation=:vertical,
+    #                             xlims=(0,maximum(sequence)),ylims = (0,1),normalize=:probability)
 
     # Plot the scatter plot and histogram as subplots
     plot(scatter_plot, histogram_plot, layout=(2, 1), size=(800, 600))
