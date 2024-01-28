@@ -1,5 +1,11 @@
-function transmapping(G::SimpleGraph, Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64},
-    indices::Vector{Int64})
+using Graphs
+using Plots
+plotlyjs()
+
+include("select_filter.jl")
+include("plot_embed.jl")
+function transmapping(G,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64};large2small::Bool = true,
+    indices::Vector{Int64}=[1,2,3,4,5])
     """
     Input:
             g: SimpleGraph
@@ -16,33 +22,35 @@ function transmapping(G::SimpleGraph, Y1::Matrix{Float64}, sequence::String,Y2::
     B = Graphs.incidence_matrix(G)
 
     # Select filter based on input sequence
-    filter = selec_filter(G, sequence)
+    feature_filter = select_filter(G, sequence)
 
     # Get indices for highlighting points in left and right maps
     # If not specified, default is to hightlight the top 10%
     # with highest feature variable values
-    if isempty(indices)
-        # Default to top 10% of nodes based on the selected feature
-        num_highlight = max(1, round(Int, 0.1 * nv(G)))  # At least 1 node
-        left_indices = sortperm(filter, rev=true)[1:num_highlight]
-    else
-        left_indices = indices
-    end
+    # Default to top 10% of nodes based on the selected feature
 
+    left_indices = sortperm(feature_filter, rev = large2small)[indices]
+    if typeof(left_indices) == Int64
+        left_indices = [left_indices]
+    end
     right_indices = v_to_e(B, left_indices)
 
 
     # Start plotting
 
     # Left Map
-    left_colors = [i in left_indices ? :red : :grey for i in 1:size(Y1, 1)]
+    left_colors = [i in left_indices ? :red : :black for i in 1:size(Y1, 1)]
     left_alphas = [i in left_indices ? 1 : 0.1 for i in 1:size(Y1, 1)]
-    plot_embed(Y_v,color = left_colors, title = "vertex embedding", alpha = left_alphas)
+    left_plot = plot_embed(Y1, color=left_colors, title="Left Map", alpha=left_alphas)
 
     # Right Map
-    right_colors = [i in right_indices ? :blue : :grey for i in 1:size(Y2, 1)]
+    right_colors = [i in right_indices ? :blue : :black for i in 1:size(Y2, 1)]
     right_alphas = [i in right_indices ? 1 : 0.1 for i in 1:size(Y2, 1)]
-    plot_embed(Y_e,color = right_colors, title = "edge embedding",alpha = right_alphas)
+    right_plot = plot_embed(Y2, color=right_colors, title="Right Map", alpha=right_alphas)
+
+    # Display both plots side by side
+    combined_plot = plot(left_plot, right_plot, layout=(1, 2))
+    display(combined_plot)
 
 end
 

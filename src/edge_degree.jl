@@ -1,6 +1,6 @@
 using Graphs
-includes("adjacency2linegraph.jl")
-function edge_degree(G::SimpleGraph)
+include("adjacency2linegraph.jl")
+function edge_degree(G)
     """
     Input:
             G: SimpleGraph

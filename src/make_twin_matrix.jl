@@ -1,4 +1,4 @@
-
+using Graphs
 include("adjacency2incidence.jl")
 include("get_embedding_matrix.jl")
 
@@ -19,13 +19,13 @@ function make_twin_matrix(A; edim=2, ptype="walks", ksteps=2, lambda=10, iter_co
     A_twin: (n+m)*(n+m) twin embedding matrix
     """
 
-
-    Bo, H,  T = adjacency2incidence(A)
+    G = Graphs.SimpleGraphs.SimpleGraph(A)
+    Bo = Graphs.incidence_matrix(G)
     B = abs.(Bo)
-    m = size(B,1)
-    n = size(B,2)
+    m = size(B,2)
+    n = size(B,1)
 
-    Abp = sparse([zeros(Int64, m, m) B; B' zeros(Int64, n, n)] )
+    Abp = sparse([zeros(Int64, m, m) B'; B zeros(Int64, n, n)] )
 
     A_twin, mat_type, figID = get_embedding_matrix(Abp, ptype, ksteps)
 

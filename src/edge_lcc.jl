@@ -1,6 +1,6 @@
 using Graphs
 
-function edge_lcc(G::SimpleGraph)
+function edge_lcc(G)
     """
     Input:
             G: SimpleGraph
