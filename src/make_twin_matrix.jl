@@ -1,5 +1,3 @@
-using Pkg
-Pkg.instantiate()
 
 include("adjacency2incidence.jl")
 include("get_embedding_matrix.jl")

@@ -1,17 +1,6 @@
 module TuXartis
 
-# Write your package code here.
-
-using Pkg
-
-Pkg.add("SparseArrays")
-Pkg.add("DelimitedFiles")
-Pkg.add("GraphPlot")
-Pkg.add("Graphs")
-Pkg.add("SGtSNEpi")
-
-using SparseArrays, DelimitedFiles, GraphPlot, Graphs,SGtSNEpi
-
+using SparseArrays, DelimitedFiles, GraphPlot, Graphs, SGtSNEpi
 
 include("adjacency2incidence.jl")
 include("get_embedding_matrix.jl")

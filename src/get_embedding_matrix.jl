@@ -1,5 +1,5 @@
 using SparseArrays
-using LightGraphs
+using Graphs
 using GraphPlot
 
 function get_embedding_matrix(A, ptype, ksteps, figID=0)

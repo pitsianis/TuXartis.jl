@@ -1,10 +1,3 @@
-using Pkg
-
-Pkg.add("SparseArrays")
-Pkg.add("DelimitedFiles")
-Pkg.add("GraphPlot")
-Pkg.add("Graphs")
-Pkg.add("SGtSNEpi")
 
 using SparseArrays, DelimitedFiles, GraphPlot, Graphs,SGtSNEpi
 

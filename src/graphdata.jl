@@ -1,6 +1,5 @@
 # instead of using switch cases, we can use a type hierarchy and dispatch on the
 # type
-import Pkg; Pkg.add("Parameters","Random")
 using Parameters
 using Random
 abstract type GraphData end
