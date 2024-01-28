@@ -19,14 +19,6 @@ function hist_map(y::Matrix, sequence::Matrix; color=:red, highlight_indices=1:1
     point_alphas = [i in highlight_indices ? 1 : 0.1 for i in 1:size(y, 1)]
     scatter_plot = plot_embedding(y,color = point_colors, title = "", alpha = point_alphas, size = (350,350))
 
-    # Create histogram
-    # histogram_plot = histogram(vec(sequence), orientation=:vertical, legend=false)
-
-    # vline!(highlight_indices .- 0.5, color=:black, linestyle=:dash, linewidth=2, histogram_plot)
-    # Highlight selected nodes in scatter plot and histogram
-    # scatter!(scatter_plot, y[vertex_indices, 1], y[vertex_indices, 2], color=:red, markersize=5)
-
-    
     # Create the first histogram plot with specified bin edges and range
     histogram_plot = histogram(vec(sequence),bins = 0:1:100, orientation=:vertical, legend=false,
                                 xlims=(0, maximum(sequence)),ylims = (0,1),normalize=:probability)
@@ -34,14 +26,6 @@ function hist_map(y::Matrix, sequence::Matrix; color=:red, highlight_indices=1:1
     # Create the second histogram using the same bin edges and range
     histogram!(histogram_plot, bins = 0:1:100,sequence[highlight_indices], color=color, orientation=:vertical,
                                 xlims=(0,maximum(sequence)),ylims = (0,1),normalize=:probability)
-
-
-    # Create the first histogram plot with specified bin edges
-    # histogram_plot = histogram(vec(sequence),orientation=:vertical, legend=false)
-
-    # # Use the same bin edges for the second histogram
-    # histogram!(histogram_plot, sequence[highlight_indices], color=color, orientation=:vertical)
-
 
     # Plot the scatter plot and histogram as subplots
     plot(scatter_plot, histogram_plot, layout=(2, 1), size=(800, 600))
