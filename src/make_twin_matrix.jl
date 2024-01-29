@@ -1,5 +1,4 @@
 using Graphs
-include("adjacency2incidence.jl")
 include("get_embedding_matrix.jl")
 
 

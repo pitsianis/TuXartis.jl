@@ -8,7 +8,7 @@ include("v_to_e.jl")
 include("e_to_v.jl")
 include("generate_graph.jl")
 include("adjacency2linegraph.jl")
-include("transmapping.jl")
+# include("transmapping.jl")
 include("select_filter.jl")
 include("make_twin_matrix.jl")
 include("hist_map.jl")
@@ -34,10 +34,9 @@ A = Graphs.adjacency_matrix(g)
 Y = sgtsnepi(A;d=2)
 
 lcc = select_filter(g, "vertex local clustering coefficient")
+deg = select_filter(g, "vertex degree")
 
-hist_map(Y, lcc, numOfbins = 10,highlight_bin = 1,scale = "xlog")
-
-
+hist_map(Y, lcc, numOfbins = 30,highlight_bin = 30,scale = "linear")
 
 
 

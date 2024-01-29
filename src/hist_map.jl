@@ -15,32 +15,31 @@ function hist_map(y::Matrix, sequence::Vector; scale = "linear", color=:red, num
 
     if scale == "linear"
         histogram_plot = histogram(vec(sequence),bins = minimum(sequence):widthOfbins:maximum(sequence), orientation=:vertical, legend=false,
-                                    xlims=(0, maximum(sequence)),normalize=:probability)
+                                    normalize=:probability,size=(400, 400))
     elseif scale == "ylog"
         histogram_plot = histogram(vec(sequence),bins = minimum(sequence):widthOfbins:maximum(sequence), orientation=:vertical, legend=false,
-                                    xlims=(0, maximum(sequence)),normalize=:probability,yscale=:log10)
+                                    normalize=:probability,yscale=:log10)
     elseif scale == "xlog"
         histogram_plot = histogram(vec(sequence),bins = minimum(sequence):widthOfbins:maximum(sequence), orientation=:vertical, legend=false,
-                                    xlims=(0, maximum(sequence)),normalize=:probability,xscale=:log10)   
+                                    normalize=:probability,xscale=:log10)   
     elseif scale =="loglog"
         histogram_plot = histogram(vec(sequence),bins = minimum(sequence):widthOfbins:maximum(sequence), orientation=:vertical, legend=false,
-                                    xlims=(0, maximum(sequence)),normalize=:probability,xscale=:log10,yscale =:log10)  
+                                   normalize=:probability,xscale=:log10,yscale =:log10)  
     end
-
-    annotation_text = string("Minimum sequence: ", minimum(sequence), "\n",
-    "Maximum sequence: ", maximum(sequence), "\n",
-    "Mean sequence: ", mean(sequence), "\n",
-    "Number of bins: ", numOfbins, "\n",
-    "Highlighted bin: ", highlight_bin, "\n",
-    "Number of colored points: ", length(highlight_indices))
-    annotate!(55,0.5,text(annotation_text, :blue, :left))
-
 
     point_colors = [i in highlight_indices ? color : :lightblue for i in 1:size(y, 1)]
     point_alphas = [i in highlight_indices ? 1 : 0.2 for i in 1:size(y, 1)]
-    scatter_plot = plot_embedding(y,color = point_colors, title = "", alpha = point_alphas, size = (350,350))
+    scatter_plot = plot_embedding(y,color = point_colors, title = "", alpha = point_alphas)
 
-    plot(scatter_plot, histogram_plot, layout=(2, 1), size=(800, 800))
+    annotation_plot = plot(1, 1, color=:white, legend=false, ticks=false, border=:none)
+    annotate!(annotation_plot, 0.5, 0.9, text("Minimum: $(minimum(sequence))", :blue, :left))
+    annotate!(annotation_plot, 0.5, 0.8, text("Maximum: $(maximum(sequence))", :blue, :left))
+    annotate!(annotation_plot, 0.5, 0.7, text("Mean: $(mean(sequence))", :blue, :left))
+    annotate!(annotation_plot, 0.5, 0.6, text("Number of Bins: $numOfbins", :blue, :left))
+    annotate!(annotation_plot, 0.5, 0.5, text("Highlighted Bin: $highlight_bin", :blue, :left))
+    annotate!(annotation_plot, 0.5, 0.4, text("Number of colored points: $(length(highlight_indices))", :blue, :left))
+
+    plot(scatter_plot, histogram_plot,annotation_plot,layout=(1,3), size=(1000, 500))
 end
 
 
