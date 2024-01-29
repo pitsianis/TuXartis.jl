@@ -8,7 +8,7 @@ include("v_to_e.jl")
 include("e_to_v.jl")
 include("generate_graph.jl")
 include("adjacency2linegraph.jl")
-include("transmapping.jl")
+# include("transmapping.jl")
 include("select_filter.jl")
 include("make_twin_matrix.jl")
 include("hist_map.jl")
@@ -24,7 +24,7 @@ function create_graph_from_edgelist(file_path)
 end
 
 # Path to your edge list file
-file_path = "src/fb-pages-tvshow.txt"
+file_path = "src/fbpages.txt"
 
 # Create the graph
 g = create_graph_from_edgelist(file_path)
@@ -34,11 +34,15 @@ A = Graphs.adjacency_matrix(g)
 Y = sgtsnepi(A;d=2)
 
 lcc = select_filter(g, "vertex local clustering coefficient")
+deg = select_filter(g, "vertex degree")
+centrality = select_filter(g,"vertex betweenness centrality")
 
-hist_map(Y, lcc, numOfbins = 10,highlight_bin = 1,scale = "xlog")
 
+hist_map(Y, centrality, numOfbins = 20,highlight_bin = 5,scale = "log-log")
+hist_map(Y, centrality, numOfbins = 20,highlight_bin = 20,scale = "log-log")
 
-
+hist_map(Y, deg, numOfbins = 20,highlight_bin = 8,scale = "log-log")
+hist_map(Y, lcc, numOfbins = 20,highlight_bin = 7,scale = "loglog")
 
 
 
