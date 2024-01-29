@@ -24,7 +24,7 @@ function create_graph_from_edgelist(file_path)
 end
 
 # Path to your edge list file
-file_path = "src/fb-pages-tvshow.txt"
+file_path = "src/fbpages.txt"
 
 # Create the graph
 g = create_graph_from_edgelist(file_path)
@@ -35,9 +35,14 @@ Y = sgtsnepi(A;d=2)
 
 lcc = select_filter(g, "vertex local clustering coefficient")
 deg = select_filter(g, "vertex degree")
+centrality = select_filter(g,"vertex betweenness centrality")
 
-hist_map(Y, lcc, numOfbins = 30,highlight_bin = 30,scale = "linear")
 
+hist_map(Y, centrality, numOfbins = 20,highlight_bin = 5,scale = "log-log")
+hist_map(Y, centrality, numOfbins = 20,highlight_bin = 20,scale = "log-log")
+
+hist_map(Y, deg, numOfbins = 20,highlight_bin = 8,scale = "log-log")
+hist_map(Y, lcc, numOfbins = 20,highlight_bin = 7,scale = "loglog")
 
 
 

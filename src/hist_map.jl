@@ -4,7 +4,7 @@ include("generate_graph.jl")
 include("plot_embedding.jl")
 
 
-function hist_map(y::Matrix, sequence::Vector; scale = "linear", color=:red, numOfbins = 10, highlight_bin = 1)
+function hist_map(y::Matrix, sequence::Vector; scale = "linear-linear", color=:red, numOfbins = 10, highlight_bin = 1)
 
     widthOfbins = (maximum(sequence)-minimum(sequence))/numOfbins
 
@@ -13,31 +13,33 @@ function hist_map(y::Matrix, sequence::Vector; scale = "linear", color=:red, num
 
     highlight_indices = findall(x -> x >= min && x <= max, sequence)
 
-    if scale == "linear"
+    if scale == "linear-linear"
         histogram_plot = histogram(vec(sequence),bins = minimum(sequence):widthOfbins:maximum(sequence), orientation=:vertical, legend=false,
                                     normalize=:probability,size=(400, 400))
-    elseif scale == "ylog"
+    elseif scale == "log-linear"
         histogram_plot = histogram(vec(sequence),bins = minimum(sequence):widthOfbins:maximum(sequence), orientation=:vertical, legend=false,
                                     normalize=:probability,yscale=:log10)
-    elseif scale == "xlog"
+    elseif scale == "linear-log"
         histogram_plot = histogram(vec(sequence),bins = minimum(sequence):widthOfbins:maximum(sequence), orientation=:vertical, legend=false,
                                     normalize=:probability,xscale=:log10)   
-    elseif scale =="loglog"
+    elseif scale =="log-log"
         histogram_plot = histogram(vec(sequence),bins = minimum(sequence):widthOfbins:maximum(sequence), orientation=:vertical, legend=false,
                                    normalize=:probability,xscale=:log10,yscale =:log10)  
     end
 
     point_colors = [i in highlight_indices ? color : :lightblue for i in 1:size(y, 1)]
-    point_alphas = [i in highlight_indices ? 1 : 0.2 for i in 1:size(y, 1)]
-    scatter_plot = plot_embedding(y,color = point_colors, title = "", alpha = point_alphas)
+    point_alphas = [i in highlight_indices ? 1 : 0.1 for i in 1:size(y, 1)]
+    scatter_plot = plot_embed(y,color = point_colors, title = "", alpha = point_alphas)
 
     annotation_plot = plot(1, 1, color=:white, legend=false, ticks=false, border=:none)
-    annotate!(annotation_plot, 0.5, 0.9, text("Minimum: $(minimum(sequence))", :blue, :left))
-    annotate!(annotation_plot, 0.5, 0.8, text("Maximum: $(maximum(sequence))", :blue, :left))
-    annotate!(annotation_plot, 0.5, 0.7, text("Mean: $(mean(sequence))", :blue, :left))
-    annotate!(annotation_plot, 0.5, 0.6, text("Number of Bins: $numOfbins", :blue, :left))
-    annotate!(annotation_plot, 0.5, 0.5, text("Highlighted Bin: $highlight_bin", :blue, :left))
-    annotate!(annotation_plot, 0.5, 0.4, text("Number of colored points: $(length(highlight_indices))", :blue, :left))
+    annotate!(annotation_plot, 0, 0.9, text("Number of nodes: $(length(sequence))", :blue, :left))
+    annotate!(annotation_plot, 0, 0.8, text("Minimum: $(minimum(sequence))", :blue, :left))
+    annotate!(annotation_plot, 0, 0.7, text("Maximum: $(maximum(sequence))", :blue, :left))
+    annotate!(annotation_plot, 0, 0.6, text("Mean: $(mean(sequence))", :blue, :left))
+    annotate!(annotation_plot, 0, 0.5, text("Number of Bins: $numOfbins", :blue, :left))
+    annotate!(annotation_plot, 0, 0.4, text("Highlighted Bin: $highlight_bin", :blue, :left))
+    annotate!(annotation_plot, 0, 0.3, text("Number of colored nodes: $(length(highlight_indices))", :blue, :left))
+    annotate!(annotation_plot, 0, 0.2, text("Scale: $scale", :blue, :left))
 
     plot(scatter_plot, histogram_plot,annotation_plot,layout=(1,3), size=(1000, 500))
 end
