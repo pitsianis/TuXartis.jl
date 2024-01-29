@@ -1,8 +1,9 @@
 using Graphs
-using Plots
+using Plots;
 plotlyjs()
 include("select_filter.jl")
 include("plot_embed.jl")
+include("pyplot.jl")
 
 """
 transmapping(G, Y1, sequence, Y2; large2small=true, indices=[1,2,3,4,5])
@@ -39,7 +40,7 @@ function transmapping(T,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64
     title::String="Translation Mapping";large2small::Bool = true,indices::Vector{Int64}=[1,2,3,4,5])
 
     # Check input type
-    if typeof(T) == SimpleGraph
+    if typeof(T) == Graphs.SimpleGraphs.SimpleGraph{Int64}
         G = T
         A = Graphs.adjacency_matrix(G)
         B = Graphs.incidence_matrix(G)
@@ -61,7 +62,7 @@ function transmapping(T,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64
     end
     right_indices = v_to_e(B, left_indices)
 
-    # Start plotting
+    # Start Plotting
     # Left Map
     left_colors = [i in left_indices ? :red : :gray for i in 1:size(Y1, 1)]
     left_alphas = [i in left_indices ? 1 : 0.1 for i in 1:size(Y1, 1)]

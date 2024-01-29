@@ -13,7 +13,7 @@ include("select_filter.jl")
 include("make_twin_matrix.jl")
 
 
-G = generate_graph("watts_strogatz",n = 1000, d = 4, p = 10, seed =1)
+G = generate_graph("watts_strogatz",n = 1000, k = 4, β = 0.01, seed =1)
 A = Graphs.adjacency_matrix(G)
 ALG = adjacency2linegraph(A)
 
@@ -31,11 +31,12 @@ Y_v = Y_twin[m+1:m+n, :]
 
 
 # demo
-
 sequence = "vertex degree"
 large2small = true
-index = [1,2,3,4,5]
-transmapping(G,Y_v,sequence,Y_e,large2small=large2small,indices=index)
+index = [1,2,3]
+display_fig = true
+title = "ws3d"
+transmapping(G,Y_v,sequence,Y_e,display_fig,title,large2small=large2small,indices=index)
 
 
 # TuXartis.hist_map(G,Y,sequence);
