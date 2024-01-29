@@ -35,8 +35,8 @@ index = [1,2,3,4,5]
 transmapping(g,Y_v,sequence,Y_e,large2small=large2small,indices=index)
 """
 
-function transmapping(T,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64},title::String="Translation Mapping";
-    large2small::Bool = true,indices::Vector{Int64}=[1,2,3,4,5])
+function transmapping(T,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64},save_fig::Bool=false,
+    title::String="Translation Mapping";large2small::Bool = true,indices::Vector{Int64}=[1,2,3,4,5])
 
     # Check input type
     if typeof(T) == SimpleGraph
@@ -75,7 +75,10 @@ function transmapping(T,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64
     # Display both plots side by side
     combined_plot = plot(left_plot, right_plot, layout=(1, 2))
     # display(combined_plot)
-    savefig(combined_plot, "combined_plot.png")
+    saved_title = string(title, ".png")
+    if save_fig
+        savefig(combined_plot, saved_title)
+    end
 
 end
 
