@@ -1,8 +1,5 @@
 using Plots,Graphs,SGtSNEpi
 using Statistics
-include("generate_graph.jl")
-include("plot_embedding.jl")
-
 
 function hist_map(y::Matrix, sequence::Vector; scale = "linear-linear", color=:red, numOfbins = 10, highlight_bin = 1)
 
@@ -32,13 +29,13 @@ function hist_map(y::Matrix, sequence::Vector; scale = "linear-linear", color=:r
     scatter_plot = plot_embed(y,color = point_colors, title = "", alpha = point_alphas)
 
     annotation_plot = plot(1, 1, color=:white, legend=false, ticks=false, border=:none)
-    annotate!(annotation_plot, 0, 0.9, text("Number of nodes: $(length(sequence))", :blue, :left))
+    annotate!(annotation_plot, 0, 0.9, text("Number of points: $(length(sequence))", :blue, :left))
     annotate!(annotation_plot, 0, 0.8, text("Minimum: $(minimum(sequence))", :blue, :left))
     annotate!(annotation_plot, 0, 0.7, text("Maximum: $(maximum(sequence))", :blue, :left))
     annotate!(annotation_plot, 0, 0.6, text("Mean: $(mean(sequence))", :blue, :left))
     annotate!(annotation_plot, 0, 0.5, text("Number of Bins: $numOfbins", :blue, :left))
     annotate!(annotation_plot, 0, 0.4, text("Highlighted Bin: $highlight_bin", :blue, :left))
-    annotate!(annotation_plot, 0, 0.3, text("Number of colored nodes: $(length(highlight_indices))", :blue, :left))
+    annotate!(annotation_plot, 0, 0.3, text("Number of colored points: $(length(highlight_indices))", :blue, :left))
     annotate!(annotation_plot, 0, 0.2, text("Scale: $scale", :blue, :left))
 
     plot(scatter_plot, histogram_plot,annotation_plot,layout=(1,3), size=(1000, 500))

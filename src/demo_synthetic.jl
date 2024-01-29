@@ -31,13 +31,13 @@ Y_v = Y_twin[m+1:m+n, :]
 
 
 # demo
-sequence = "edge degree"
+sequence = "vertex betweenness centrality"
 large2small = true
-index = [1,2]
+index = [1,2,9]
 display_fig = true
-title = "test3"
-translation_type = "e-e"
-transmapping(G,Y_e,sequence,Y_e,translation_type,display_fig,title,large2small=large2small,indices=index)
+title = "test4"
+translation_type = "v-v"
+transmapping(G,Y_v,sequence,Y_v,translation_type,display_fig,title,large2small=large2small,indices=index)
 
 
 # TuXartis.hist_map(G,Y,sequence);
