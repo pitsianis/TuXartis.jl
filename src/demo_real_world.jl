@@ -2,8 +2,6 @@ using Pkg
 using SparseArrays, DelimitedFiles, GraphPlot, Graphs,SGtSNEpi
 using Plots
 using LightGraphs
-using CSV
-using JLD2
 
 include("plot_embedding.jl")
 include("v_to_e.jl")
@@ -13,6 +11,7 @@ include("adjacency2linegraph.jl")
 include("transmapping.jl")
 include("select_filter.jl")
 include("make_twin_matrix.jl")
+include("hist_map.jl")
 
 # Function to read an edge list from a file and create a graph
 function create_graph_from_edgelist(file_path)
@@ -30,27 +29,40 @@ file_path = "src/fb-pages-tvshow.txt"
 # Create the graph
 g = create_graph_from_edgelist(file_path)
 
-# Generate the adjacency matrix
+
 A = Graphs.adjacency_matrix(g)
-ALG = adjacency2linegraph(A)
+Y = sgtsnepi(A;d=2)
 
-# Try individual embedding
-Y_v = sgtsnepi(A;d=2)
-Y_e = sgtsnepi(ALG;d=2)
+lcc = select_filter(g, "vertex local clustering coefficient")
 
-# @save "Y_v.jld2" Y_v
-# @save "Y_e.jld2" Y_e
+hist_map(Y, lcc, numOfbins = 10,highlight_bin = 1,scale = "xlog")
 
-# # Try twin-embedding
-A_twin = make_twin_matrix(A)
-Y_twin = sgtsnepi(A_twin,d=3)
-m = size(ALG,1)
-n = size(A,1)
-Y_e = Y_twin[1:m, :]
-Y_v = Y_twin[m+1:m+n, :]
 
-# demo
-sequence = "vertex degree"
-large2small = true
-index = [1,2,3,4,5]
-transmapping(g,Y_v,sequence,Y_e,large2small=large2small,indices=index)
+
+
+
+
+# # Generate the adjacency matrix
+# A = Graphs.adjacency_matrix(g)
+# ALG = adjacency2linegraph(A)
+
+# # Try individual embedding
+# Y_v = sgtsnepi(A;d=2)
+# Y_e = sgtsnepi(ALG;d=2)
+
+# # @save "Y_v.jld2" Y_v
+# # @save "Y_e.jld2" Y_e
+
+# # # Try twin-embedding
+# A_twin = make_twin_matrix(A)
+# Y_twin = sgtsnepi(A_twin,d=3)
+# m = size(ALG,1)
+# n = size(A,1)
+# Y_e = Y_twin[1:m, :]
+# Y_v = Y_twin[m+1:m+n, :]
+
+# # demo
+# sequence = "vertex degree"
+# large2small = true
+# index = [1,2,3,4,5]
+# transmapping(g,Y_v,sequence,Y_e,large2small=large2small,indices=index)
