@@ -13,8 +13,8 @@ include("select_filter.jl")
 include("make_twin_matrix.jl")
 
 
-G = generate_graph("barabasi_albert",n = 1000, d = 10, k = 3, seed =1)
-A = Graphs.adjacency_matrix(g)
+G = generate_graph("barabasi_albert",n = 500, d = 10, k = 3, seed =1)
+A = Graphs.adjacency_matrix(G)
 ALG = adjacency2linegraph(A)
 
 # Try individual embedding
@@ -39,5 +39,3 @@ transmapping(G,Y_v,sequence,Y_e,large2small=large2small,indices=index)
 
 
 # TuXartis.hist_map(G,Y,sequence);
-
-
