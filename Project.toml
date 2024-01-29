@@ -4,9 +4,11 @@ authors = ["ACDNX"]
 version = "1.0.0-DEV"
 
 [deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
 GraphPlot = "a2cc645c-3eea-5389-862e-a155d0052231"
 Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
+JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 Parameters = "d96e819e-fc66-5662-9728-84c9c7592b0a"
 PlotlyJS = "f0f68f2c-4968-5e81-91da-67840de0976a"
