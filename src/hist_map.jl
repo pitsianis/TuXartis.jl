@@ -3,13 +3,6 @@ using Statistics
 include("generate_graph.jl")
 include("plot_embedding.jl")
 
-g = generate_graph("barabasi_albert",n = 1000, d = 10, k = 3, seed =1)
-deg = degree(g)
-
-
-Y = sgtsnepi(g;d=2)
-
-
 
 function hist_map(y::Matrix, sequence::Vector; scale = "linear", color=:red, numOfbins = 10, highlight_bin = 1)
 
@@ -51,5 +44,5 @@ function hist_map(y::Matrix, sequence::Vector; scale = "linear", color=:red, num
 end
 
 
-hist_map(Y, deg, numOfbins = 10,highlight_bin = 1,scale = "xlog")
-
+#Author: Cody
+#Date: 2024-1-28
