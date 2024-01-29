@@ -3,7 +3,8 @@ using Plots;
 plotlyjs()
 include("select_filter.jl")
 include("plot_embed.jl")
-include("pyplot.jl")
+include("get_indices.jl")
+include("translation_maps.jl")
 
 """
 transmapping(G, Y1, sequence, Y2; large2small=true, indices=[1,2,3,4,5])
@@ -36,8 +37,9 @@ index = [1,2,3,4,5]
 transmapping(g,Y_v,sequence,Y_e,large2small=large2small,indices=index)
 """
 
-function transmapping(T,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64},display_fig::Bool=false,
-    title::String="Translation Mapping";large2small::Bool = true,indices::Vector{Int64}=[1,2,3,4,5])
+function transmapping(T,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64},trans_type::String,
+    display_fig::Bool=false,title::String="Translation Mapping";large2small::Bool = true,
+    indices::Vector{Int64}=[1,2,3,4,5])
 
     # Check input type
     if typeof(T) == Graphs.SimpleGraphs.SimpleGraph{Int64}
@@ -56,30 +58,29 @@ function transmapping(T,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64
     feature_filter = select_filter(G, sequence)
 
     # Get indices for highlighting points in left and right maps
-    left_indices = sortperm(feature_filter, rev = large2small)[indices]
-    if typeof(left_indices) == Int64
-        left_indices = [left_indices]
+    left_indices, right_indices = get_indices(G,indices,feature_filter,large2small,trans_type)
+
+    # Set title for subplots
+    if trans_type == "v-v"
+        left_title = "Vertex Embedding"
+        right_title = "Vertex Embedding"
+    elseif trans_type  == "e-e"
+        left_title = "Edge Embedding"
+        right_title = "Edge Embedding"
+    else
+        left_title = "Vertex Embedding"
+        right_title = "Edge Embedding"
     end
-    right_indices = v_to_e(B, left_indices)
 
-    # Start Plotting
-    # Left Map
-    left_colors = [i in left_indices ? :red : :gray for i in 1:size(Y1, 1)]
-    left_alphas = [i in left_indices ? 1 : 0.1 for i in 1:size(Y1, 1)]
-    left_plot = plot_embed(Y1, color=left_colors, title="Vertex Embedding", alpha=left_alphas)
 
-    # Right Map
-    right_colors = [i in right_indices ? :blue : :gray for i in 1:size(Y2, 1)]
-    right_alphas = [i in right_indices ? 1 : 0.1 for i in 1:size(Y2, 1)]
-    right_plot = plot_embed(Y2, color=right_colors, title="Edge Embedding", alpha=right_alphas)
+    # Plot translation maps
+    trans_map = translation_maps(Y1,Y2,left_indices,right_indices,left_title,right_title)
 
-    # Display both plots side by side
-    combined_plot = plot(left_plot, right_plot, layout=(1, 2))
     if display_fig
-        display(combined_plot)
+        display(trans_map)
     end
     saved_title = string(title, ".png")
-    savefig(combined_plot, saved_title)
+    savefig(trans_map, saved_title)
 
 end
 

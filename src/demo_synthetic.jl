@@ -23,7 +23,7 @@ Y_e = sgtsnepi(ALG;d=3)
 
 # Try twin-embedding
 A_twin = make_twin_matrix(A)
-Y_twin = sgtsnepi(A_twin,d=3)
+Y_twin = sgtsnepi(A_twin,d=2)
 m = size(ALG,1)
 n = size(A,1)
 Y_e = Y_twin[1:m, :]
@@ -31,12 +31,13 @@ Y_v = Y_twin[m+1:m+n, :]
 
 
 # demo
-sequence = "vertex degree"
+sequence = "edge degree"
 large2small = true
-index = [1,2,3]
+index = [1,2]
 display_fig = true
-title = "ws3d"
-transmapping(G,Y_v,sequence,Y_e,display_fig,title,large2small=large2small,indices=index)
+title = "test3"
+translation_type = "e-e"
+transmapping(G,Y_e,sequence,Y_e,translation_type,display_fig,title,large2small=large2small,indices=index)
 
 
 # TuXartis.hist_map(G,Y,sequence);

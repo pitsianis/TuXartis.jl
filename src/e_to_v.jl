@@ -16,8 +16,8 @@ function e_to_v(B::AbstractMatrix, eidx::Vector{T}) where T
     bitmatrix = submatrix .> 0
 
     # Find nodes that are incident to all edges
-    all_incidents = all(bitmatrix, dims=2)
-    vidx = findall(x -> x, vec(all_incidents))
+    any_incidents = any(bitmatrix, dims=2)
+    vidx = findall(x -> x, vec(any_incidents))
 
     return vidx
 end

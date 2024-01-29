@@ -1,4 +1,4 @@
-function plot_embed(Y; color=:blue, xlabel="", ylabel="", title::String, marksize=5, plot_size=(700, 700), alpha=0.5)
+function plot_embed(Y; color=:blue, xlabel="", ylabel="", title::String="", marksize=5, plot_size=(700, 700), alpha=0.5)
     num_cols = size(Y, 2)
 
     if num_cols == 2
@@ -19,6 +19,9 @@ function plot_embed(Y; color=:blue, xlabel="", ylabel="", title::String, marksiz
         ylabel!(p, ylabel)
     end
 
-    title!(p, title)
+    if !isempty(title)  # Only add a title if it's not empty
+        title!(p, title)
+    end
+    
     return p
 end
