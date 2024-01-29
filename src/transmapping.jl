@@ -74,11 +74,12 @@ function transmapping(T,Y1::Matrix{Float64}, sequence::String,Y2::Matrix{Float64
 
     # Display both plots side by side
     combined_plot = plot(left_plot, right_plot, layout=(1, 2))
+    if 
+        
+    end
     # display(combined_plot)
     saved_title = string(title, ".png")
-    if save_fig
-        savefig(combined_plot, saved_title)
-    end
+    savefig(combined_plot, saved_title)
 
 end
 
