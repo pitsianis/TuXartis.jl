@@ -1,6 +1,5 @@
-using Graphs
-include("edge_degree.jl")
-include("edge_lcc.jl")
+# include("edge_degree.jl")
+# include("edge_lcc.jl")
 
 function select_filter(G, sequence::String)
     filters = Dict(

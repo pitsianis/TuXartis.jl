@@ -1,5 +1,3 @@
-using Graphs
-
 function get_neighbors(G::Graphs.SimpleGraphs.SimpleGraph{Int64}, nodes::AbstractVector)
     neighbors_set = Set{Int}()
     for node in nodes
