@@ -1,6 +1,3 @@
-using Plots,Graphs,SGtSNEpi
-using Statistics
-
 function hist_map(y::Matrix, sequence::Vector; scale = "linear-linear", color=:red, numOfbins = 10, highlight_bin = 1)
     embed_dim = size(y,2)
     widthOfbins = (maximum(sequence)-minimum(sequence))/numOfbins

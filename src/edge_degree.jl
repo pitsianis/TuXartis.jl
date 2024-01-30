@@ -1,4 +1,3 @@
-using Graphs
 include("adjacency2linegraph.jl")
 function edge_degree(G)
     """

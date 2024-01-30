@@ -1,5 +1,3 @@
-using Graphs
-
 function edge_lcc(G)
     """
     Input:

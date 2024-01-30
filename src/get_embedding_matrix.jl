@@ -1,9 +1,4 @@
-using SparseArrays
-using Graphs
-using GraphPlot
-
-function get_embedding_matrix(A, ptype, ksteps, figID=0)
-    """
+"""
     INPUT
     A: nxn array, the adjacency matrix (unweighted in the current version)
     ptype: character string
@@ -21,6 +16,8 @@ function get_embedding_matrix(A, ptype, ksteps, figID=0)
     mat_type: character string -- 'sim' or 'distsq'
     figID: integer
     """
+
+function get_embedding_matrix(A, ptype, ksteps, figID=0)
 
     mat_type = "sim"
 

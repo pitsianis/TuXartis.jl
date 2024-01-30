@@ -1,13 +1,10 @@
-using Graphs
-using SimpleGraphs
-using LinearAlgebra
-function adjacency2linegraph(A)
-    """
+"""
     Input:
             A: Adjacency matrix of a simple graph
     Output:
             L: Adjacency matrix of the line graph of the input graph
-    """
+"""
+function adjacency2linegraph(A)
 
     # Check if A is symmetric
     if !(A == A')
