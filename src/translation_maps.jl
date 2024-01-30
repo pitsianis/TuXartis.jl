@@ -1,7 +1,7 @@
 # include("plot_embed.jl")
 
 function translation_maps(Y1,Y2,left_indices,right_indices,left_title,right_title)
-    embed_dim = size(Y, 2)
+    embed_dim = size(Y1, 2)
 
     # Start Plotting
     if embed_dim == 2

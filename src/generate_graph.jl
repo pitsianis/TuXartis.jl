@@ -13,8 +13,8 @@ function generate_graph(graph_type; kwargs...)
 
     if graph_type == "barabasi_albert"
         n = get(kwargs, :n, 1000)
-        n0 = get(kwargs, :n0, 10)
         k = get(kwargs, :k, 3)
+        n0 = get(kwargs, :n0, k)
         seed = get(kwargs, :seed, 1)
         return Graphs.barabasi_albert(n, n0, k, seed=seed)
 

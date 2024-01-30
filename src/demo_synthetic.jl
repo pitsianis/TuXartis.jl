@@ -13,12 +13,12 @@ include("make_twin_matrix.jl")
 include("hist_map.jl")
 
 
-G = generate_graph("barabasi_albert",n = 1000, n0 = 10, k = 3, seed =1)
+G = generate_graph("barabasi_albert",n = 1000, k = 3, seed =1)
 A = Graphs.adjacency_matrix(G)
 ALG = adjacency2linegraph(A)
 
 # Individual embedding, here we use SGtSNEpi
-embedding_dimension = 3
+embedding_dimension = 2
 # Y_v = sgtsnepi(A;d=embedding_dimension)
 # Y_e = sgtsnepi(ALG;d=embedding_dimension)
 
@@ -42,7 +42,7 @@ e_lcc = select_filter(G,"edge local clustering coefficient")
 
 ### His_map demo
 # vertex map
-hist_map(Y_twin_v, v_deg, numOfbins = 30,highlight_bin = 5,scale = "linear-linear")
+hist_map(Y_twin_v, v_deg, numOfbins = 30,highlight_bin = 5,scale = "log-log")
 hist_map(Y_twin_v, v_lcc, numOfbins = 20,highlight_bin = 10,scale = "log-linear")
 hist_map(Y_twin_v, v_centrality, numOfbins = 50,highlight_bin = 28,scale = "log-log")
 

@@ -1,3 +1,15 @@
+using Plots
+using Statistics
+
+include("plot_embed.jl")
+
+"""
+    Input:
+            y: Embedding matrix
+            sequence: Feature variable
+    Output:
+            plot: Histogram plot
+"""
 function hist_map(y::Matrix, sequence::Vector; scale = "linear-linear", color=:red, numOfbins = 10, highlight_bin = 1)
     embed_dim = size(y,2)
     widthOfbins = (maximum(sequence)-minimum(sequence))/numOfbins

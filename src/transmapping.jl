@@ -1,8 +1,10 @@
-# plotlyjs()
-# include("select_filter.jl")
-# include("plot_embed.jl")
-# include("get_indices.jl")
-# include("translation_maps.jl")
+using Plots
+using Graphs
+plotlyjs()
+include("select_filter.jl")
+include("plot_embed.jl")
+include("get_indices.jl")
+include("translation_maps.jl")
 
 """
 transmapping(G, Y1, sequence, Y2; large2small=true, indices=[1,2,3,4,5])

@@ -1,4 +1,4 @@
-# include("get_embedding_matrix.jl")
+include("get_embedding_matrix.jl")
 
 function make_twin_matrix(A; edim=2, ptype="walks", ksteps=2, lambda=10, iter_conv=50, embed_seed=0)
     """
