@@ -2,7 +2,7 @@ using Plots,Graphs,SGtSNEpi
 using Statistics
 
 function hist_map(y::Matrix, sequence::Vector; scale = "linear-linear", color=:red, numOfbins = 10, highlight_bin = 1)
-
+    embed_dim = size(y,2)
     widthOfbins = (maximum(sequence)-minimum(sequence))/numOfbins
 
     min = minimum(sequence)+ widthOfbins*(highlight_bin-1)
@@ -24,9 +24,15 @@ function hist_map(y::Matrix, sequence::Vector; scale = "linear-linear", color=:r
                                    normalize=:probability,xscale=:log10,yscale =:log10)  
     end
 
-    point_colors = [i in highlight_indices ? color : :lightblue for i in 1:size(y, 1)]
-    point_alphas = [i in highlight_indices ? 1 : 0.1 for i in 1:size(y, 1)]
-    scatter_plot = plot_embed(y,color = point_colors, title = "", alpha = point_alphas)
+    if embed_dim == 2
+        point_colors = [i in highlight_indices ? color : :lightblue for i in 1:size(y, 1)]
+        point_alphas = [i in highlight_indices ? 1 : 0.1 for i in 1:size(y, 1)]
+        scatter_plot = plot_embed(y,color = point_colors, title = "", alpha = point_alphas)
+    elseif embed_dim == 3
+        point_colors = [i in highlight_indices ? color : :black for i in 1:size(y, 1)]
+        point_alphas = [i in highlight_indices ? 1 : 0.1 for i in 1:size(y, 1)]
+        scatter_plot = plot_embed(y,color = point_colors, title = "", alpha = point_alphas)
+    end
 
     annotation_plot = plot(1, 1, color=:white, legend=false, ticks=false, border=:none)
     annotate!(annotation_plot, 0, 0.9, text("Number of points: $(length(sequence))", :blue, :left))

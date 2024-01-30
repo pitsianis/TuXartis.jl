@@ -1,4 +1,6 @@
+using Graphs
 function get_indices(G,indices,feature_filter,large2small,trans_type)
+    B = Graphs.incidence_matrix(G)
     left_indices = sortperm(feature_filter, rev = large2small)[indices]
     if typeof(left_indices) == Int64
         left_indices = [left_indices]

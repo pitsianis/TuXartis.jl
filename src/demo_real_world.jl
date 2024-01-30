@@ -12,22 +12,24 @@ include("transmapping.jl")
 include("select_filter.jl")
 include("make_twin_matrix.jl")
 include("hist_map.jl")
+include("load_rw.jl")
 
-file_path = "src/fbpages.txt"
+file_path1 = "src/fbpages.txt"
+file_path2 = "bio-DM-HT.txt"
 
 # Create the graph from edge list
-G = load_rw(file_path)
+G = load_rw(file_path2)
 A = Graphs.adjacency_matrix(G)
 ALG = adjacency2linegraph(A)
 
 # Individual embedding, here we use SGtSNEpi
 embedding_dimension = 2
-Y_v = sgtsnepi(A;d=embedding_dimension)
-Y_e = sgtsnepi(ALG;d=embedding_dimension)
+# Y_v = sgtsnepi(A;d=embedding_dimension)
+# Y_e = sgtsnepi(ALG;d=embedding_dimension)
 
 # twin-embedding
 A_twin = make_twin_matrix(A)
-Y_twin = sgtsnepi(A_twin,d=3)
+Y_twin = sgtsnepi(A_twin,d=embedding_dimension)
 m = size(ALG,1)
 n = size(A,1)
 Y_twin_e = Y_twin[1:m, :]
@@ -60,12 +62,31 @@ hist_map(Y_e, e_lcc, numOfbins = 30,highlight_bin = 1,scale = "log-log")
 
 ### Transmapping demo
 
-sequence = "vertex betweenness centrality"
+sequence = "vertex degree"
 large2small = true
-index = [1,2,9]
+index = [1,2,3]
 display_fig = true
-title = "test4"
-translation_type = "v-v"
-transmapping(G,Y_v,sequence,Y_v,translation_type,display_fig,title,large2small=large2small,indices=index)
+title = "syntheticdemo1"
+translation_type = "v-e"
+transmapping(G,Y_twin_v,sequence,Y_twin_e,translation_type,display_fig,title,large2small=large2small,
+indices=index)
 
+sequence = "vertex local clustering coefficient"
+large2small = false
+index = [1,2,3,4,5]
+display_fig = true
+title = "syntheticdemo2"
+translation_type = "v-v"
+transmapping(G,Y_twin_v,sequence,Y_twin_v,translation_type,display_fig,title,large2small=large2small,
+indices=index)
+
+sequence = "edge degree"
+large2small = true
+index = [1]
+display_fig = true
+title = "syntheticdemo3"
+translation_type = "e-e"
+transmapping(G,Y_twin_e,sequence,Y_twin_e,translation_type,display_fig,title,large2small=large2small,
+indices=index)
 ###
+
